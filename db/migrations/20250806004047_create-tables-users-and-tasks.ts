@@ -5,7 +5,7 @@ export async function up(knex: Knex): Promise<void> {
     return knex.schema
       .createTable('users', (table) => {
         table.uuid('id').primary();
-        table.string('sessionId').notNullable()
+        table.string('session_id').notNullable()
         table.string('name').notNullable()
         table.string('email').notNullable()
         table.timestamp('created_at')
@@ -14,7 +14,7 @@ export async function up(knex: Knex): Promise<void> {
       })
       .createTable('tasks', (table) => {
         table.uuid('id').primary();
-        table.string('userId')
+        table.string('user_id')
           .notNullable()
           .references('id')
           .inTable('users')
@@ -22,7 +22,7 @@ export async function up(knex: Knex): Promise<void> {
           .onUpdate('CASCADE')
         table.string('name').notNullable()
         table.string('description').notNullable()
-        table.boolean('isComplete').defaultTo(false)
+        table.boolean('is_complete').defaultTo(false)
         table.timestamp('created_at')
           .defaultTo(knex.fn.now())
           .notNullable();

@@ -4,18 +4,18 @@ declare module "knex" {
   interface Tables {
     users: {
       id: string,
-      sessionId: string,
+      session_id: string,
       name: string,
       email: string,
-      createdAt: date
+      created_at: date
     }
     tasks: {
       id: string,
-      userId: string,
+      user_id: string,
       name: string,
       description: string,
-      isComplete: boolean,
-      createdAt: date
+      is_complete: boolean,
+      created_at: date
     }
   }
 }
